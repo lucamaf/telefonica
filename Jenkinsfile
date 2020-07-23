@@ -47,7 +47,7 @@ node() {
 
     // create the ThreescaleService object from your API metadata manifest:
     service = toolbox.prepareThreescaleService(
-        openapi: [filename: "cicd/" + params.OPENAPI_SPECIFICATION_FILE ],
+        openapi: [filename: params.OPENAPI_SPECIFICATION_FILE ],
         environment: [ baseSystemName: params.API_BASE_SYSTEM_NAME,
                        publicBasePath: "/",
 					   privateBaseUrl: backend_service,
