@@ -128,8 +128,8 @@ node() {
     // Create an Application
     service.applyApplication()
 
-  }
-}*/
+  }*/
+}
  
 def runIntegrationTests(def service) {
   // To run the integration tests when using APIcast SaaS instances, we need
