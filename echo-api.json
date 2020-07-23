@@ -137,5 +137,17 @@
                 }
             }
         }
-    }
+    },
+    "securityDefinitions" : {
+        "apikey" : {
+          "type" : "apiKey",
+          "description" : "Use a 3scale API Key",
+          "name" : "api-key",
+          "in" : "header"
+        }
+        },
+        "security" : [ {
+        "apikey" : [ ]
+        } ]
+    
 }
