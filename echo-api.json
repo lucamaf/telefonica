@@ -1,0 +1,155 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Echo API",
+        "version": "1.0.0",
+        "description": "A sample echo API"
+    },
+    "host": "echo-api.3scale.net",
+    "basePath": "/",
+    "schemes": [
+        "http"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/": {
+            "get": {
+                "produces": [
+                    "application/json",
+                    "application/xml",
+                    "text/xml",
+                    "text/html"
+                ],
+                "parameters": [
+                    {
+                        "name": "user_key",
+                        "description": "Your API access key",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "x-data-threescale-name": "user_keys"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorModel"
+                        }
+                    },
+                    "200": {
+                        "description": "response",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseModel"
+                        }
+                    }
+                },
+                "operationId": "echo_no_params",
+                "description": "Echo API with no parameters"
+            }
+        },
+        "/{echo}": {
+            "get": {
+                "produces": [
+                    "application/json",
+                    "application/xml",
+                    "text/xml",
+                    "text/html"
+                ],
+                "parameters": [
+                    {
+                        "name": "echo",
+                        "description": "The string to be echoed",
+                        "in": "path",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user_key",
+                        "description": "Your API access key",
+                        "in": "query",
+                        "required": true,
+                        "type": "string",
+                        "x-data-threescale-name": "user_keys"
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "unexpected error",
+                        "schema": {
+                            "$ref": "#/definitions/ErrorModel"
+                        }
+                    },
+                    "200": {
+                        "description": "response",
+                        "schema": {
+                            "$ref": "#/definitions/ResponseModel"
+                        }
+                    }
+                },
+                "operationId": "echo_with_params",
+                "description": "Echo API with parameters"
+            }
+        }
+    },
+    "definitions": {
+        "ResponseModel": {
+            "required": [
+                "method",
+                "path",
+                "args",
+                "headers"
+            ],
+            "type": "object",
+            "properties": {
+                "method": {
+                    "type": "string"
+                },
+                "path": {
+                    "type": "string"
+                },
+                "args": {
+                    "type": "string"
+                },
+                "headers": {
+                    "type": "object"
+                }
+            }
+        },
+        "ErrorModel": {
+            "required": [
+                "code",
+                "message"
+            ],
+            "type": "object",
+            "properties": {
+                "code": {
+                    "format": "int32",
+                    "type": "integer"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+        }
+    },
+    "securityDefinitions": {
+        "apikey": {
+            "type": "apiKey",
+            "description": "Use a 3scale API Key",
+            "name": "api-key",
+            "in": "header"
+        }
+    },
+    "security": [
+        {
+            "apikey": [
+            ]
+        }
+    ]
+}
